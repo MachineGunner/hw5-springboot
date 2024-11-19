@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: changes/create-todo-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changes/create-task-history-table.yaml
+      relativeToChangelogFile: true

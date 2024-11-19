@@ -1,0 +1,66 @@
+databaseChangeLog:
+  - changeSet:
+      author: olhab
+      id: 1
+      changes:
+        - createTable:
+            tableName: todos
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_todos
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: due_date
+                  type: datetime
+                  constraints:
+                    nullable: true
+              - column:
+                  name: priority
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_date
+                  type: datetime
+                  constraints:
+                    nullable: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      author: olhab
+      id: 2
+      changes:
+        - createIndex:
+            tableName: todos
+            indexName: idx_user_id
+            columns:
+              - column:
+                  name: user_id

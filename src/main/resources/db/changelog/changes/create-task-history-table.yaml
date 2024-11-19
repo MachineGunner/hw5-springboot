@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      author: olhab
+      id: 3
+      changes:
+        - createTable:
+            tableName: task_history
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_task_history
+              - column:
+                  name: todo_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: old_state
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: new_state
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: change_date
+                  type: datetime
+                  constraints:
+                    nullable: true
+              - column:
+                  name: changed_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: task_history
+            baseColumnNames: todo_id
+            constraintName: fk_task_history_todos
+            referencedTableName: todos
+            referencedColumnNames: id
